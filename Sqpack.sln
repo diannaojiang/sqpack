@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.0.0
+MinimumVisualStudioVersion = 10.0.0.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sqpack", "Sqpack\Sqpack.csproj", "{7A653049-62E8-4965-AE3C-A83A0A0C35E1}"
+EndProject
+Project("{1FD46CED-E4D6-44FD-BE6B-4BBCF8E03047}") = "Sqpack.CLI", "Sqpack.CLI\Sqpack.CLI.csproj", "{9D50553D-771B-49AD-9BC7-378F6A1E8AD1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A653049-62E8-4965-AE3C-A83A0A0C35E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A653049-62E8-4965-AE3C-A83A0A0C35E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A653049-62E8-4965-AE3C-A83A0A0C35E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A653049-62E8-4965-AE3C-A83A0A0C35E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D50553D-771B-49AD-9BC7-378F6A1E8AD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D50553D-771B-49AD-9BC7-378F6A1E8AD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D50553D-771B-49AD-9BC7-378F6A1E8AD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D50553D-771B-49AD-9BC7-378F6A1E8AD1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
