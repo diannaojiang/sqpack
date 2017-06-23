@@ -158,7 +158,10 @@ namespace Sqpack {
         public byte[] GetFileData(int offset) {
             this.Stream.Seek(offset, SeekOrigin.Begin);
 
-            (var contentType, var uncompressedSize, var blockBufferSize) = this.ParseDataEntryHeader(out var blockTable);
+            var dataEntryHeader = this.ParseDataEntryHeader(out var blockTable);
+            var contentType = dataEntryHeader.Item1;
+            var uncompressedSize = dataEntryHeader.Item2;
+            var blockBufferSize = dataEntryHeader.Item3;
             switch(contentType) {
                 case 2:
                     // Binary
