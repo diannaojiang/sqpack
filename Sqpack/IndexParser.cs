@@ -7,7 +7,7 @@ using FileSegmentHeader = System.Tuple<uint, uint, int>;
 
 namespace Sqpack {
     public class IndexParser: ParserBase {
-        private SegmentHeader[] _segments;
+        private SegmentHeader[] segments;
 
         protected override int Type => 2;
 
@@ -51,6 +51,8 @@ namespace Sqpack {
         }
 
         private IEnumerable<uint> ParseFolderSegment(int offset, int size, string hash) {
+            if(size == 0)
+                yield break;
             var data = this.GetStreamData(offset, size, hash);
             using(var reader = new BinaryReader(new MemoryStream(data)))
                 while(true) {
@@ -83,10 +85,10 @@ namespace Sqpack {
         }
 
         public IEnumerable<Folder> GetFolders() {
-            this._segments = this._segments ?? this.ParseSegmentHeaders().ToArray();
-            var segment = this._segments.First(s => s.Item1 == 4);
+            this.segments = this.segments ?? this.ParseSegmentHeaders().ToArray();
+            var segment = this.segments.First(s => s.Item1 == 4);
             var folders = this.ParseFolderSegment(segment.Item3, segment.Item4, segment.Item5);
-            segment = this._segments.First(s => s.Item1 == 1);
+            segment = this.segments.First(s => s.Item1 == 1);
             var files = this.ParseFileSegment(segment.Item3, segment.Item4, segment.Item5);
             return folders.Select(folder => new Folder(folder,
                 files.Where(file => file.Item2 == folder)

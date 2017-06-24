@@ -22,7 +22,7 @@ namespace Sqpack {
             this.Stream.Seek(position, SeekOrigin.Begin);
             this.Stream.Read(result, 0, result.Length);
             if(hash != null && result.ToSha1() != hash)
-                throw new Exception("Segment data hash mismatch.");
+                throw new Exception("Data hash mismatch.");
             return result;
         }
 
