@@ -84,15 +84,17 @@ namespace Sqpack {
             this.ParseHeader();
         }
 
-        public IEnumerable<Folder> GetFolders() {
+        public Dictionary<uint, Dictionary<uint, int>> GetFolders() {
             this.segments = this.segments ?? this.ParseSegmentHeaders().ToArray();
             var segment = this.segments.First(s => s.Item1 == 4);
             var folders = this.ParseFolderSegment(segment.Item3, segment.Item4, segment.Item5);
             segment = this.segments.First(s => s.Item1 == 1);
             var files = this.ParseFileSegment(segment.Item3, segment.Item4, segment.Item5);
-            return folders.Select(folder => new Folder(folder,
-                files.Where(file => file.Item2 == folder)
-                     .Select(file => new File(file.Item1, file.Item3))));
+            return folders.ToDictionary(
+                folder => folder,
+                folder => files.Where(file => file.Item2 == folder)
+                               .ToDictionary(file => file.Item1, file => file.Item3)
+            );
         }
     }
 }
